@@ -40,10 +40,9 @@ namespace Restaurant_1
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            // Masa bilgisi için ID
-          
-            // Rezervasyon formunu aç
-            
+            reservation Reservation= new reservation();
+            Reservation.Show();
+            this.Hide();
         }
     }
 }

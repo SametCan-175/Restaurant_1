@@ -13,93 +13,83 @@ namespace Restaurant_1
 {
     public partial class reservation : Form
     {
+        public int SelectedTableID { get; private set; }
         public reservation()
         {
             InitializeComponent();
+
+            // PictureBox'lara tıklama olaylarını ekliyoruz.
+            pic1.Click += (sender, e) => OpenReservationTable(11);
+            pic2.Click += (sender, e) => OpenReservationTable(12);
+            pic3.Click += (sender, e) => OpenReservationTable(13);
+            pic4.Click += (sender, e) => OpenReservationTable(14);
+            pic5.Click += (sender, e) => OpenReservationTable(15);
+            pic6.Click += (sender, e) => OpenReservationTable(16);
+            pic7.Click += (sender, e) => OpenReservationTable(17);
+            pic8.Click += (sender, e) => OpenReservationTable(18);
+            pic9.Click += (sender, e) => OpenReservationTable(19);
+            pic10.Click += (sender, e) => OpenReservationTable(20);
         }
-        string connectionString = "Data Source=LAPTOP-DP9CSODP\\SQLEXPRESS;Initial Catalog=Restaurant_1;Integrated Security=True";
-        private void OpenReservationForm(int tableID)
+        private void OpenReservationTable(int tableID)
         {
-            using (reservation formReservation = new reservation(tableID))
-            {
-                if (formReservation.ShowDialog() == DialogResult.OK)
-                {
-                    // Rezervasyon başarıyla yapıldıktan sonra masa durumunu güncelle
-                    UpdateTableStatus();
-                }
-            }
+            // Masa bilgilerini almak
+           
+
+            // ReservationTable formunu açıyoruz ve masa bilgilerini gönderiyoruz
+            ReservationTable reservationTableForm = new ReservationTable(tableID);
+            reservationTableForm.ShowDialog();
         }
-        private void UpdateTableStatus()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                for (int i = 1; i <= 10; i++) // 10 masa için döngü
-                {
-                    SqlCommand sqlCommand = new SqlCommand(
-                        "SELECT COUNT(*) FROM Reservation WHERE TableID = @TableID AND IsActive = 1", connection);
-                    sqlCommand.Parameters.AddWithValue("@TableID", i);
-
-                    int count = (int)sqlCommand.ExecuteScalar();
-                    PictureBox pictureBox = (PictureBox)Controls.Find("pic" + i, true).FirstOrDefault();
-
-                    if (pictureBox != null)
-                    {
-                        pictureBox.BackColor = count > 0 ? Color.Red : Color.Green; // Doluysa kırmızı, boşsa yeşil
-                    }
-                }
-            }
-        }
+        // Seçilen masayı kaydetme
+       
 
         private void pic1_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(1);
+            //OpenReservationForm(1);
         }
 
         private void pic2_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(2);
+            //OpenReservationForm(2);
         }
 
         private void pic3_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(3);
+            //OpenReservationForm(3);
         }
 
         private void pic4_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(4);
+            //OpenReservationForm(4);
         }
 
         private void pic5_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(5);
+            //OpenReservationForm(5);
         }
 
         private void pic6_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(6);
+            //OpenReservationForm(6);
         }
 
         private void pic7_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(7);
+            //OpenReservationForm(7);
         }
 
         private void pic8_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(8);
+            //OpenReservationForm(8);
         }
 
         private void pic9_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(9);
+            //OpenReservationForm(9);
         }
 
         private void pic10_Click(object sender, EventArgs e)
         {
-            OpenReservationForm(10);
+            //OpenReservationForm(10);
         }
 
         private void reservation_Load(object sender, EventArgs e)

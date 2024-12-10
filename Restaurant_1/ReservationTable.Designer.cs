@@ -33,7 +33,7 @@
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dtpReservationTime = new System.Windows.Forms.DateTimePicker();
+            this.dtpReservationDate = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -42,7 +42,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(189, 62);
+            this.label1.Location = new System.Drawing.Point(189, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 58);
             this.label1.TabIndex = 0;
@@ -84,13 +84,13 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Soyadı:";
             // 
-            // dtpReservationTime
+            // dtpReservationDate
             // 
-            this.dtpReservationTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.dtpReservationTime.Location = new System.Drawing.Point(199, 283);
-            this.dtpReservationTime.Name = "dtpReservationTime";
-            this.dtpReservationTime.Size = new System.Drawing.Size(222, 36);
-            this.dtpReservationTime.TabIndex = 5;
+            this.dtpReservationDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.dtpReservationDate.Location = new System.Drawing.Point(199, 283);
+            this.dtpReservationDate.Name = "dtpReservationDate";
+            this.dtpReservationDate.Size = new System.Drawing.Size(222, 36);
+            this.dtpReservationDate.TabIndex = 5;
             // 
             // pictureBox1
             // 
@@ -107,7 +107,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.dtpReservationTime);
+            this.Controls.Add(this.dtpReservationDate);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCustomer);
@@ -129,7 +129,7 @@
         private System.Windows.Forms.TextBox txtCustomer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dtpReservationTime;
+        private System.Windows.Forms.DateTimePicker dtpReservationDate;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
