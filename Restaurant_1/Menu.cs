@@ -22,5 +22,28 @@ namespace Restaurant_1
         {
           
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Tables tables = new Tables
+            {
+                user_role = this.user_role
+            };
+            tables.Show();
+            this.Hide();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            // Masa bilgisi için ID
+          
+            // Rezervasyon formunu aç
+            
+        }
     }
 }

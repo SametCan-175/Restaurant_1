@@ -19,34 +19,12 @@ namespace Restaurant_1
         }
         string connectionString = "Data Source=LAPTOP-DP9CSODP\\SQLEXPRESS;Initial Catalog=Restaurant_1;Integrated Security=True";
         public int secili_masa { get; set; }
-
+        public string user_role { get; set; }
 
 
         decimal totalPrice;
 
-        //private void SaveOrderToDatabase(int tableID, decimal totalPrice, bool isPaid)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(connectionString))
-        //    {
-        //        connection.Open();
 
-        //        // SQL sorgusu: Orders tablosuna veri ekle
-        //        string query = "INSERT INTO Orders (TableID, OrderDate, TotalPrice, IsPaid) VALUES (@TableID, @OrderDate, @TotalPrice, @IsPaid)";
-        //        using (SqlCommand command = new SqlCommand(query, connection))
-        //        {
-        //            command.Parameters.AddWithValue("@TableID", tableID);
-        //            command.Parameters.AddWithValue("@OrderDate", DateTime.Now); // Sipariş tarihi
-        //            command.Parameters.AddWithValue("@TotalPrice", totalPrice);
-        //            command.Parameters.AddWithValue("@IsPaid", isPaid);
-
-        //            // Sorguyu çalıştır
-        //            command.ExecuteNonQuery();
-        //        }
-        //    }
-
-        //    MessageBox.Show("Sipariş başarıyla kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //}
-        // SaveOrderToDatabase metodunu bir kez tanımlayın
         private int SaveOrderToDatabase(int tableID, decimal totalPrice, bool isPaid)
         {
             int orderId = 0;
@@ -70,7 +48,7 @@ namespace Restaurant_1
 
             return orderId;
         }
-         
+
         private void SaveOrderDetailsToDatabase(int orderId, ListView listViewOrders)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -177,25 +155,25 @@ namespace Restaurant_1
 
         private void Siparis_Load(object sender, EventArgs e)
         {
-            
+
         }
         private void LoadAnaYemekItemsToListView(string Category)
         {
-            
-           
-            
+
+
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand sqlCommand=new SqlCommand("SELECT Name, Price FROM MenuItems WHERE Category =@Category AND IsAvailable = 1",connection); // Ana yemekleri getir
+                SqlCommand sqlCommand = new SqlCommand("SELECT Name, Price FROM MenuItems WHERE Category =@Category AND IsAvailable = 1", connection); // Ana yemekleri getir
                 sqlCommand.Parameters.AddWithValue("@Category", Category);
-                
+
 
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 listView1.Items.Clear(); // Önceki verileri temizle
                 while (reader.Read())
                 {
-                    
+
                     string itemName = reader["Name"].ToString();
                     decimal price = (decimal)reader["Price"];
 
@@ -207,7 +185,7 @@ namespace Restaurant_1
                 reader.Close();
             }
         }
-            private void button12_Click(object sender, EventArgs e)
+        private void button12_Click(object sender, EventArgs e)
         {
             LoadAnaYemekItemsToListView("Ana Yemek");
         }
@@ -254,7 +232,7 @@ namespace Restaurant_1
                 // Adet TextBox'ından değer al
                 if (int.TryParse(textBox1.Text, out int quantity) && quantity > 0)
                 {
-                     totalPrice = price * quantity;
+                    totalPrice = price * quantity;
 
                     // Sipariş ListView'ine ekle
                     ListViewItem orderItem = new ListViewItem(itemName); // Ürün adı
@@ -283,7 +261,7 @@ namespace Restaurant_1
                 MessageBox.Show("Lütfen iptal etmek için bir sipariş seçiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-       private int tableidgetir;
+        private int tableidgetir;
         private void button21_Click(object sender, EventArgs e)
         {
             if (listViewOrders.Items.Count == 0)
@@ -293,7 +271,7 @@ namespace Restaurant_1
             }
 
             // Masa numarasını almak
-           // Masa numarasını kullanıcıdan alıyoruz
+            // Masa numarasını kullanıcıdan alıyoruz
             int tableidgetir = 0;
 
             // Masa ID'sini veritabanından almak
@@ -333,14 +311,137 @@ namespace Restaurant_1
             SaveOrderDetailsToDatabase(orderId, listViewOrders);
 
             // Sipariş ekranını temizle
-            listViewOrders.Items.Clear();
+
             MessageBox.Show("Sipariş başarıyla kaydedildi!", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-            Tables tables = new Tables();
-            tables.Show();
-            this.Hide();
+            DialogResult result1 = MessageBox.Show("Ana Sayfaya Dönmek İster Misin?", "Uygulama Çıkışı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                Menu menu = new Menu();
+                menu.user_role = this.user_role;
+                menu.Show();
+                this.Hide();
+
+
+
+
+            }
+
+
+
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+
+
+                    connection.Open();
+                    if (listViewOrders.Items.Count == 0)
+                    {
+                        MessageBox.Show("Sipariş listesi boş! Lütfen önce bir sipariş oluşturun.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    SqlCommand sqlCommand = new SqlCommand("SELECT TableID FROM Tables WHERE TableNumber = @secilimasa", connection);
+                    sqlCommand.Parameters.AddWithValue("@secilimasa", secili_masa);
+                    object result = sqlCommand.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        tableidgetir = (int)result; // Veritabanından alınan TableID
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seçilen masa mevcut değil!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    // Masa ID kontrolü
+                    if (tableidgetir == 0)
+                    {
+                        MessageBox.Show("Geçerli bir masa seçilmedi. Lütfen sipariş oluştururken bir masa seçin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Toplam fiyatı hesapla
+                    decimal totalPrice = 0;
+                    foreach (ListViewItem item in listViewOrders.Items)
+                    {
+                        decimal itemTotalPrice = decimal.Parse(item.SubItems[3].Text, System.Globalization.NumberStyles.Currency); // Toplam fiyat sütunu
+                        totalPrice += itemTotalPrice;
+                    }
+
+                    // Ödeme yöntemi (örnek olarak)
+                    string paymentMethod = "Nakit"; // Varsayılan değer
+                    DialogResult result1 = MessageBox.Show("Ödeme yöntemi 'Nakit' olarak kaydedilecek. Devam edilsin mi?", "Ödeme Onayı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result1 == DialogResult.No) return;
+
+                    // Ödeme tarihini al
+                    DateTime paymentDate = DateTime.Now;
+
+                    // Payments tablosuna veri ekle ve masayı boş yap
+
+                  
+
+
+                    // Payments tablosuna ekleme
+                    string paymentQuery = @"
+            INSERT INTO Payments (OrderID, PaymentDate, Amount, PaymentMethod)
+            VALUES (@OrderID, @PaymentDate, @Amount, @PaymentMethod)";
+                    using (SqlCommand paymentCommand = new SqlCommand(paymentQuery, connection))
+                    {
+                        paymentCommand.Parameters.AddWithValue("@OrderID", SaveOrderToDatabase(tableidgetir, totalPrice, true));
+                        paymentCommand.Parameters.AddWithValue("@PaymentDate", paymentDate);
+                        paymentCommand.Parameters.AddWithValue("@Amount", totalPrice);
+                        paymentCommand.Parameters.AddWithValue("@PaymentMethod", paymentMethod);
+
+                        paymentCommand.ExecuteNonQuery();
+                    }
+
+                    // Masayı boş olarak işaretleme
+                    string updateTableQuery = "UPDATE Tables SET IsReserved = 0 WHERE TableID = @TableID";
+                    using (SqlCommand updateTableCommand = new SqlCommand(updateTableQuery, connection))
+                    {
+                        updateTableCommand.Parameters.AddWithValue("@TableID", tableidgetir);
+                        updateTableCommand.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Ödeme başarılı bir şekilde gerçekleştirildi ve masa boş olarak işaretlendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Sipariş ekranını temizle
+                    listViewOrders.Items.Clear();
+
+
+
+                    DialogResult result2 = MessageBox.Show("Ana Sayfaya Dönmek İster Misin?", "Uygulama Çıkışı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result2 == DialogResult.Yes)
+                    {
+                        Menu menu = new Menu();
+                        menu.user_role = this.user_role;
+                        menu.Show();
+                        this.Hide();
+
+
+
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+
+
+
 
         }
 
     }
 }
+

@@ -19,7 +19,7 @@ namespace Restaurant_1
         {
             InitializeComponent();
         }
-
+       
         private void UpdateTableStatus()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -44,7 +44,7 @@ namespace Restaurant_1
                 }
             }
         }
-
+        public string user_role {  set; get; }
         private void UpdatePictureBoxStatus(int tableNumber, bool isReserved)
         {
             // Dinamik olarak PictureBox kontrolünü alıyoruz
@@ -88,11 +88,9 @@ namespace Restaurant_1
                 sqlCommand.ExecuteNonQuery();
             }
         }
-
-        string connectionString = "Data Source=LAPTOP-DP9CSODP\\SQLEXPRESS;Initial Catalog=Restaurant_1;Integrated Security=True";
-        private void pic1_Click(object sender, EventArgs e)
+        private void tablenumber(int table)
         {
-            int tableNumber = 1;
+            int tableNumber = table;
             bool isReserved = IsTableReserved(tableNumber);
 
             if (isReserved)
@@ -107,118 +105,63 @@ namespace Restaurant_1
                 UpdateTableStatusInDatabase(tableNumber, true);
                 UpdatePictureBoxStatus(tableNumber, true);
             }
+
             Siparis frmSiparis = new Siparis
             {
-                secili_masa = 1
+                secili_masa = table
             };
             frmSiparis.Show();
             this.Hide();
+        }
+        string connectionString = "Data Source=LAPTOP-DP9CSODP\\SQLEXPRESS;Initial Catalog=Restaurant_1;Integrated Security=True";
+        private void pic1_Click(object sender, EventArgs e)
+        {
+            tablenumber(1);
         }
 
         private void pic2_Click(object sender, EventArgs e)
         {
-            int tableNumber = 2;
-            bool isReserved = IsTableReserved(tableNumber);
-
-            if (isReserved)
-            {
-                // Masa boşaltılacaksa
-                UpdateTableStatusInDatabase(tableNumber, false);
-                UpdatePictureBoxStatus(tableNumber, false);
-            }
-            else
-            {
-                // Masa rezerve edilecekse
-                UpdateTableStatusInDatabase(tableNumber, true);
-                UpdatePictureBoxStatus(tableNumber, true);
-            }
-          
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = 2
-            };
-            frmSiparis.Show();
-            this.Hide();
+            tablenumber(2);
         }
 
         private void pic3_Click(object sender, EventArgs e)
-        {
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = 3
-            };
-            frmSiparis.Show();
-            this.Hide();
+        {tablenumber(3);
         }
 
         private void pic4_Click(object sender, EventArgs e)
         {
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = 4
-            };
-            frmSiparis.Show();
-            this.Hide();
+            tablenumber(4);
         }
 
         private void pic5_Click(object sender, EventArgs e)
         {
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = 5
-            };
-            frmSiparis.Show();
-            this.Hide();
+
+            tablenumber(5);
         }
 
         private void pic6_Click(object sender, EventArgs e)
         {
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = 6
-            };
-            frmSiparis.Show();
-            this.Hide();
+            tablenumber(6);
         }
 
         private void pic7_Click(object sender, EventArgs e)
         {
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = 7
-            };
-            frmSiparis.Show();
-            this.Hide();
+            tablenumber(7);
         }
-
+      
         private void pic8_Click(object sender, EventArgs e)
         {
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = 8
-            };
-            frmSiparis.Show();
-            this.Hide();
+            tablenumber(8);
         }
 
         private void pic9_Click(object sender, EventArgs e)
         {
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = 9
-            };
-            frmSiparis.Show();
-            this.Hide();
+            tablenumber(9);
         }
 
         private void pic10_Click(object sender, EventArgs e)
         {
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = 10
-            };
-            frmSiparis.Show();
-            this.Hide();
+            tablenumber(10);
         }
        
 
