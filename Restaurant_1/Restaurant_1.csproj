@@ -86,6 +86,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Siparis.resx">
       <DependentUpon>Siparis.cs</DependentUpon>
@@ -105,6 +106,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-knife-and-fork-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-coffee-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cake-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-salad-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-hamburger-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-soup-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-restaurant-food-menu-background-image_190820.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-pasta-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-knife-and-fork-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-restaurant-food-menu-background-image_1908201.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-pay-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-order-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cancel-50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

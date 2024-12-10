@@ -16,7 +16,7 @@ namespace Restaurant_1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Siparis());
+            Application.Run(new Tables());
         }
     }
 }
