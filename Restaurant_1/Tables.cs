@@ -15,160 +15,124 @@ namespace Restaurant_1
 
     public partial class Tables : Form
     {
+        public string user_role {  get; set; }
+
+
+        string connectionString = "Data Source=LAPTOP-DP9CSODP\\SQLEXPRESS;Initial Catalog=Restaurant_1;Integrated Security=True";
+
         public Tables()
         {
             InitializeComponent();
         }
-       
-        private void UpdateTableStatus()
+
+        // Masaların rezervasyon durumunu kontrol etmek
+        private bool IsTableReserved(int tableNumber)
         {
+            bool isReserved = false;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
-                // Her masa için sorgu yapılacak
-                for (int i = 1; i <= 10; i++)
+                string query = "SELECT IsReserved FROM Tables WHERE TableID = @TableNumber";
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    // Her masa için Is_Reserved değerini sorguluyoruz
-                    SqlCommand sqlCommand = new SqlCommand("SELECT IsReserved FROM Tables WHERE TableNumber = @TableNumber", connection);
-                    sqlCommand.Parameters.AddWithValue("@TableNumber", i);
-
-                    object result = sqlCommand.ExecuteScalar();
+                    command.Parameters.AddWithValue("@TableNumber", tableNumber);
+                    object result = command.ExecuteScalar();
                     if (result != null)
                     {
-                        bool isReserved = (bool)result;
-
-                        // PictureBox'ı duruma göre güncelliyoruz
-                        UpdatePictureBoxStatus(i, isReserved);
+                        isReserved = (bool)result;
                     }
                 }
             }
-        }
-        public string user_role {  set; get; }
-        private void UpdatePictureBoxStatus(int tableNumber, bool isReserved)
-        {
-            // Dinamik olarak PictureBox kontrolünü alıyoruz
-            PictureBox pictureBox = (PictureBox)Controls.Find("pic" + tableNumber, true).FirstOrDefault();
-
-            if (pictureBox != null)
-            {
-                if (isReserved)
-                {
-                    // Eğer masa doluysa, kırmızı renk veya dolu simgesi kullanabilirsiniz
-                    pictureBox.BackColor = Color.Red;  // Dolu
-                }
-                else
-                {
-                    // Eğer masa boşsa, yeşil renk veya boş simgesi kullanabilirsiniz
-                    pictureBox.BackColor = Color.Green;  // Boş
-                }
-            }
-        }
-        private bool IsTableReserved(int tableNumber)
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand sqlCommand = new SqlCommand("SELECT IsReserved FROM Tables WHERE TableNumber = @TableNumber", connection);
-                sqlCommand.Parameters.AddWithValue("@TableNumber", tableNumber);
-                object result = sqlCommand.ExecuteScalar();
-
-                return result != null && (bool)result;
-            }
+            return isReserved;
         }
 
+        // Masa rezerve durumunu güncellemek
         private void UpdateTableStatusInDatabase(int tableNumber, bool isReserved)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlCommand sqlCommand = new SqlCommand("UPDATE Tables SET IsReserved = @IsReserved WHERE TableNumber = @TableNumber", connection);
-                sqlCommand.Parameters.AddWithValue("@IsReserved", isReserved);
-                sqlCommand.Parameters.AddWithValue("@TableNumber", tableNumber);
-                sqlCommand.ExecuteNonQuery();
+                string query = "UPDATE Tables SET IsReserved = @IsReserved WHERE TableNumber = @TableNumber";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@TableNumber", tableNumber);
+                    command.Parameters.AddWithValue("@IsReserved", isReserved);
+                    command.ExecuteNonQuery();
+                }
             }
         }
-        private void tablenumber(int table)
-        {
-            int tableNumber = table;
-            bool isReserved = IsTableReserved(tableNumber);
 
-            if (isReserved)
+        // Sipariş formunu açmak
+        private void OpenSiparisForm(int seciliMasa)
+        {
+            Siparis siparisForm = new Siparis();
+            siparisForm.secili_masa = seciliMasa;
+            siparisForm.Show();
+            this.Hide();
+        }
+
+        // Masa tıklama event'leri
+        private void pic1_Click(object sender, EventArgs e) => HandleTableClick(11, pic11);
+        private void pic2_Click(object sender, EventArgs e) => HandleTableClick(12, pic12);
+        private void pic3_Click(object sender, EventArgs e) => HandleTableClick(13, pic13);
+        private void pic4_Click(object sender, EventArgs e) => HandleTableClick(14, pic14);
+        private void pic5_Click(object sender, EventArgs e) => HandleTableClick(15, pic15);
+        private void pic6_Click(object sender, EventArgs e) => HandleTableClick(16, pic16);
+        private void pic7_Click(object sender, EventArgs e) => HandleTableClick(17, pic17);
+        private void pic8_Click(object sender, EventArgs e) => HandleTableClick(18, pic18);
+        private void pic9_Click(object sender, EventArgs e) => HandleTableClick(19, pic19);
+        private void pic10_Click(object sender, EventArgs e) => HandleTableClick(20, pic20);
+
+        // Ortak masa işlemleri
+        private void HandleTableClick(int tableNumber, PictureBox pictureBox)
+        {
+            if (!IsTableReserved(tableNumber))
             {
-                // Masa boşaltılacaksa
-                UpdateTableStatusInDatabase(tableNumber, false);
-                UpdatePictureBoxStatus(tableNumber, false);
+                // Masa rezerve edilmedi, rezerve et
+                UpdateTableStatusInDatabase(tableNumber, true);
+                pictureBox.BackColor = System.Drawing.Color.Red; // Masa arka planını kırmızı yap
+                OpenSiparisForm(tableNumber); // Sipariş formunu aç
             }
             else
             {
-                // Masa rezerve edilecekse
-                UpdateTableStatusInDatabase(tableNumber, true);
-                UpdatePictureBoxStatus(tableNumber, true);
+                // Masa zaten rezerve edilmiş
+                MessageBox.Show("Bu masa zaten rezerve edilmiştir.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            Siparis frmSiparis = new Siparis
-            {
-                secili_masa = table
-            };
-            frmSiparis.Show();
-            this.Hide();
-        }
-        string connectionString = "Data Source=LAPTOP-DP9CSODP\\SQLEXPRESS;Initial Catalog=Restaurant_1;Integrated Security=True";
-        private void pic1_Click(object sender, EventArgs e)
-        {
-            tablenumber(1);
         }
 
-        private void pic2_Click(object sender, EventArgs e)
-        {
-            tablenumber(2);
-        }
-
-        private void pic3_Click(object sender, EventArgs e)
-        {tablenumber(3);
-        }
-
-        private void pic4_Click(object sender, EventArgs e)
-        {
-            tablenumber(4);
-        }
-
-        private void pic5_Click(object sender, EventArgs e)
-        {
-
-            tablenumber(5);
-        }
-
-        private void pic6_Click(object sender, EventArgs e)
-        {
-            tablenumber(6);
-        }
-
-        private void pic7_Click(object sender, EventArgs e)
-        {
-            tablenumber(7);
-        }
-      
-        private void pic8_Click(object sender, EventArgs e)
-        {
-            tablenumber(8);
-        }
-
-        private void pic9_Click(object sender, EventArgs e)
-        {
-            tablenumber(9);
-        }
-
-        private void pic10_Click(object sender, EventArgs e)
-        {
-            tablenumber(10);
-        }
-       
-
+        // Form yüklendiğinde tüm masaların durumunu kontrol et
         private void Tables_Load(object sender, EventArgs e)
         {
-            UpdateTableStatus();
+            CheckTableStatus();
         }
 
+        // Tüm masaların durumunu kontrol et ve PictureBox arka planlarını güncelle
+        private void CheckTableStatus()
+        {
+            for (int i = 11; i <= 20; i++)
+            {
+                PictureBox pictureBox = (PictureBox)Controls["pic" + i];
+                if (IsTableReserved(i))
+                    pictureBox.BackColor = System.Drawing.Color.Red; // Dolu ise kırmızı
+                else
+                    pictureBox.BackColor = System.Drawing.Color.Green; // Boş ise yeşil
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            DialogResult result1 = MessageBox.Show("Ana Sayfaya Dönmek İster Misin?", "Uygulama Çıkışı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result1 == DialogResult.Yes)
+            {
+                Menu menu = new Menu();
+                menu.user_role = this.user_role;
+                menu.Show();
+                this.Hide();
+
+
+
+
+            }
+        }
     }
 }

@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cash Transactions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cash Transactions.Designer.cs">
+      <DependentUpon>Cash Transactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomInputReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomInputReservation.Designer.cs">
+      <DependentUpon>CustomInputReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +96,12 @@
     <Compile Include="Tables.Designer.cs">
       <DependentUpon>Tables.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Cash Transactions.resx">
+      <DependentUpon>Cash Transactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomInputReservation.resx">
+      <DependentUpon>CustomInputReservation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

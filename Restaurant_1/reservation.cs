@@ -30,6 +30,8 @@ namespace Restaurant_1
             pic9.Click += (sender, e) => OpenReservationTable(19);
             pic10.Click += (sender, e) => OpenReservationTable(20);
         }
+
+
         private void OpenReservationTable(int tableID)
         {
             // Masa bilgilerini almak

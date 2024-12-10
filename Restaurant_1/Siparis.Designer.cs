@@ -28,15 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Siparis));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -59,12 +52,22 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -86,126 +89,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // button18
-            // 
-            this.button18.BackColor = System.Drawing.Color.Blue;
-            this.button18.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_knife_and_fork_641;
-            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button18.ForeColor = System.Drawing.Color.White;
-            this.button18.Location = new System.Drawing.Point(241, 391);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(223, 109);
-            this.button18.TabIndex = 3;
-            this.button18.Text = "Ara Sıcak";
-            this.button18.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button18.UseVisualStyleBackColor = false;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
-            // 
-            // button19
-            // 
-            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button19.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_pasta_100;
-            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button19.ForeColor = System.Drawing.Color.White;
-            this.button19.Location = new System.Drawing.Point(12, 391);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(223, 109);
-            this.button19.TabIndex = 4;
-            this.button19.Text = "Makarna";
-            this.button19.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button19.UseVisualStyleBackColor = false;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // button17
-            // 
-            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.button17.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_soup_64;
-            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button17.ForeColor = System.Drawing.Color.White;
-            this.button17.Location = new System.Drawing.Point(241, 276);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(223, 109);
-            this.button17.TabIndex = 2;
-            this.button17.Text = "Çorba";
-            this.button17.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button17.UseVisualStyleBackColor = false;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // button16
-            // 
-            this.button16.BackColor = System.Drawing.Color.Lime;
-            this.button16.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_salad_64;
-            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button16.ForeColor = System.Drawing.Color.White;
-            this.button16.Location = new System.Drawing.Point(241, 161);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(223, 109);
-            this.button16.TabIndex = 2;
-            this.button16.Text = "Salata";
-            this.button16.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button16.UseVisualStyleBackColor = false;
-            this.button16.Click += new System.EventHandler(this.button16_Click);
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.Fuchsia;
-            this.button15.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_cake_50;
-            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button15.ForeColor = System.Drawing.Color.White;
-            this.button15.Location = new System.Drawing.Point(12, 161);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(223, 109);
-            this.button15.TabIndex = 2;
-            this.button15.Text = "Tatlılar";
-            this.button15.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.Gold;
-            this.button14.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_hamburger_50;
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button14.ForeColor = System.Drawing.Color.White;
-            this.button14.Location = new System.Drawing.Point(12, 276);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(223, 109);
-            this.button14.TabIndex = 2;
-            this.button14.Text = "FastFood";
-            this.button14.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button13.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_coffee_48;
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button13.ForeColor = System.Drawing.Color.White;
-            this.button13.Location = new System.Drawing.Point(241, 46);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(223, 109);
-            this.button13.TabIndex = 1;
-            this.button13.Text = "İçecekler";
-            this.button13.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.Color.Red;
-            this.button12.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_knife_and_fork_64;
-            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button12.ForeColor = System.Drawing.Color.White;
-            this.button12.Location = new System.Drawing.Point(12, 46);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(223, 109);
-            this.button12.TabIndex = 0;
-            this.button12.Text = "Ana Yemek";
-            this.button12.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // groupBox2
             // 
@@ -426,20 +309,20 @@
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // button20
+            // button22
             // 
-            this.button20.BackColor = System.Drawing.Color.Lime;
-            this.button20.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_pay_48;
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button20.ForeColor = System.Drawing.Color.White;
-            this.button20.Location = new System.Drawing.Point(1251, 706);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(140, 79);
-            this.button20.TabIndex = 5;
-            this.button20.Text = "Ödeme";
-            this.button20.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button20.UseVisualStyleBackColor = false;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
+            this.button22.BackColor = System.Drawing.Color.Red;
+            this.button22.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_cancel_50;
+            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button22.ForeColor = System.Drawing.Color.White;
+            this.button22.Location = new System.Drawing.Point(1347, 791);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(140, 79);
+            this.button22.TabIndex = 17;
+            this.button22.Text = "İptal";
+            this.button22.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // button21
             // 
@@ -456,20 +339,150 @@
             this.button21.UseVisualStyleBackColor = false;
             this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
-            // button22
+            // button20
             // 
-            this.button22.BackColor = System.Drawing.Color.Red;
-            this.button22.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_cancel_50;
-            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button22.ForeColor = System.Drawing.Color.White;
-            this.button22.Location = new System.Drawing.Point(1347, 791);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(140, 79);
-            this.button22.TabIndex = 17;
-            this.button22.Text = "İptal";
-            this.button22.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
+            this.button20.BackColor = System.Drawing.Color.Lime;
+            this.button20.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_pay_48;
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button20.ForeColor = System.Drawing.Color.White;
+            this.button20.Location = new System.Drawing.Point(1251, 706);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(140, 79);
+            this.button20.TabIndex = 5;
+            this.button20.Text = "Ödeme";
+            this.button20.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button20.UseVisualStyleBackColor = false;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // button18
+            // 
+            this.button18.BackColor = System.Drawing.Color.Blue;
+            this.button18.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_knife_and_fork_641;
+            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button18.ForeColor = System.Drawing.Color.White;
+            this.button18.Location = new System.Drawing.Point(241, 391);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(223, 109);
+            this.button18.TabIndex = 3;
+            this.button18.Text = "Ara Sıcak";
+            this.button18.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button18.UseVisualStyleBackColor = false;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button19
+            // 
+            this.button19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button19.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_pasta_100;
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button19.ForeColor = System.Drawing.Color.White;
+            this.button19.Location = new System.Drawing.Point(12, 391);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(223, 109);
+            this.button19.TabIndex = 4;
+            this.button19.Text = "Makarna";
+            this.button19.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button19.UseVisualStyleBackColor = false;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button17
+            // 
+            this.button17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.button17.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_soup_64;
+            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button17.ForeColor = System.Drawing.Color.White;
+            this.button17.Location = new System.Drawing.Point(241, 276);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(223, 109);
+            this.button17.TabIndex = 2;
+            this.button17.Text = "Çorba";
+            this.button17.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button17.UseVisualStyleBackColor = false;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // button16
+            // 
+            this.button16.BackColor = System.Drawing.Color.Lime;
+            this.button16.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_salad_64;
+            this.button16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button16.ForeColor = System.Drawing.Color.White;
+            this.button16.Location = new System.Drawing.Point(241, 161);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(223, 109);
+            this.button16.TabIndex = 2;
+            this.button16.Text = "Salata";
+            this.button16.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.Fuchsia;
+            this.button15.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_cake_50;
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button15.ForeColor = System.Drawing.Color.White;
+            this.button15.Location = new System.Drawing.Point(12, 161);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(223, 109);
+            this.button15.TabIndex = 2;
+            this.button15.Text = "Tatlılar";
+            this.button15.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.Gold;
+            this.button14.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_hamburger_50;
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button14.ForeColor = System.Drawing.Color.White;
+            this.button14.Location = new System.Drawing.Point(12, 276);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(223, 109);
+            this.button14.TabIndex = 2;
+            this.button14.Text = "FastFood";
+            this.button14.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button13.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_coffee_48;
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button13.ForeColor = System.Drawing.Color.White;
+            this.button13.Location = new System.Drawing.Point(241, 46);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(223, 109);
+            this.button13.TabIndex = 1;
+            this.button13.Text = "İçecekler";
+            this.button13.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.Color.Red;
+            this.button12.BackgroundImage = global::Restaurant_1.Properties.Resources.icons8_knife_and_fork_64;
+            this.button12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button12.ForeColor = System.Drawing.Color.White;
+            this.button12.Location = new System.Drawing.Point(12, 46);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(223, 109);
+            this.button12.TabIndex = 0;
+            this.button12.Text = "Ana Yemek";
+            this.button12.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(87, 29);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(105, 64);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Siparis
             // 
@@ -477,6 +490,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1899, 1055);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button22);
             this.Controls.Add(this.button21);
             this.Controls.Add(this.button20);
@@ -503,6 +517,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,5 +559,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

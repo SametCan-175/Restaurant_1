@@ -27,7 +27,7 @@ namespace Restaurant_1
         {
             Tables tables = new Tables
             {
-                user_role = this.user_role
+               user_role  = this.user_role
             };
             tables.Show();
             this.Hide();
@@ -35,7 +35,9 @@ namespace Restaurant_1
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-
+            Cash_Transactions transactions = new Cash_Transactions();
+            transactions.Show();
+            this.Hide();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

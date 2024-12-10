@@ -24,7 +24,7 @@ namespace Restaurant_1
 
         decimal totalPrice;
 
-
+        public string MusteriAdi {  get; set; }
         private int SaveOrderToDatabase(int tableID, decimal totalPrice, bool isPaid)
         {
             int orderId = 0;
@@ -442,6 +442,47 @@ namespace Restaurant_1
 
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            
+
+
+                // Masayı boş olarak işaretleme
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                try
+                {
+                    connection.Open();
+
+                    string updateTableQuery = "UPDATE Tables SET IsReserved = 0 WHERE TableID = @TableID";
+                    using (SqlCommand updateTableCommand = new SqlCommand(updateTableQuery, connection))
+                    {
+                        updateTableCommand.Parameters.AddWithValue("@TableID", tableidgetir);
+                        updateTableCommand.ExecuteNonQuery();
+                    }
+
+
+                    DialogResult result1 = MessageBox.Show("Ana Sayfaya Dönmek İster Misin?", "Uygulama Çıkışı", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result1 == DialogResult.Yes)
+                    {
+                        Menu menu = new Menu();
+                        menu.user_role = this.user_role;
+                        menu.Show();
+                        this.Hide();
+
+
+
+
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Hata Nedeni:" + ex.Message);
+                }
+                  finally { connection.Close(); }
+                }
+          
+        }
     }
 }
 

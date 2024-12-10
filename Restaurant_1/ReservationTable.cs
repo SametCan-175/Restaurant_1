@@ -144,11 +144,11 @@ namespace Restaurant_1
             }
 
             // Geçerli tarih kontrolü
-            if (reservationDate < DateTime.Now)
-            {
-                MessageBox.Show("Geçmiş bir tarihe rezervasyon yapılamaz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //if (reservationDate <=DateTime.Now)
+            //{
+            //    MessageBox.Show("Geçmiş bir tarihe rezervasyon yapılamaz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
             // Masa dolu mu kontrol et
             if (IsTableReserved(TableID, reservationDate))
